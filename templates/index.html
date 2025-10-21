@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Posturas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detector de Postura en Tiempo Real</h1>
+        <p>Permite el acceso a tu cámara y presiona "Iniciar Detección".</p>
+        <div class="video-container">
+            <video id="webcam" autoplay playsinline></video>
+        </div>
+        <button id="startButton">Iniciar Detección</button>
+        <div class="resultado">
+            <h2>Postura Detectada:</h2>
+            <p id="status">Esperando...</p>
+        </div>
+    </div>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Ignorar carpetas de caché
+__pycache__/
+*.pyc
+
+# Ignorar el dataset (no es necesario para ejecutar el modelo)
+dataset/
+
+# Ignorar archivos de entorno virtual si usas uno
+.venv/
+venv
