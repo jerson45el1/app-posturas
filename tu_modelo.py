@@ -5,12 +5,12 @@ from tensorflow.keras.models import load_model
 
 # --- 1. Cargar el modelo y las etiquetas ---
 try:
-    print("Cargando modelo desde 'clasif_posturas.keras'...")
+    print("Cargando modelo ligero desde 'clasif_posturas.keras'...")
     modelo_cargado = load_model('clasif_posturas.keras')
     
     clases = np.load('label_encoder.npy', allow_pickle=True)
     
-    # IMPORTANTE: Este es el tamaño de imagen de tu script de entrenamiento
+    # El tamaño debe coincidir con el del entrenamiento
     IMG_SIZE = 64 
     
     print("¡Modelo cargado exitosamente!")
@@ -24,14 +24,14 @@ except Exception as e:
 
 def detectar_postura(frame):
     """
-    Recibe un frame de OpenCV, lo procesa para el modelo simple
+    Recibe un frame de OpenCV, lo procesa para el modelo CNN ligero
     y devuelve un string con la postura detectada.
     """
     if modelo_cargado is None:
         return "Error: Modelo no cargado"
 
     try:
-        # --- 2. Pre-procesamiento (¡CORREGIDO!) ---
+        # --- 2. Pre-procesamiento (Debe coincidir con el entrenamiento) ---
         
         # 1. Convertir a escala de grises (1 canal)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
